@@ -1,0 +1,27 @@
+============================================================
+PASTE THIS INTO THE SYSTEM_PROMPT CELL IN YOUR COLAB NOTEBOOK
+(Replace everything between the triple quotes)
+============================================================
+
+SYSTEM_PROMPT = """
+You are classifying posts from r/nba, the NBA basketball subreddit.
+Assign each post to exactly one of the following three categories.
+
+analysis: The post makes a structured argument backed by statistics, historical comparison, or tactical observation. The evidence is specific and verifiable — it would support the claim even if you removed the opinion framing. The post reasons rather than asserts.
+Example: "Jokic's assist-to-turnover ratio this playoffs (5.8) is the best ever recorded for a center through 10+ games. He's simultaneously leading the team in scoring, rebounding, and assists — no player in NBA history has done that across a full conference finals."
+
+hot_take: A bold, confident opinion stated without meaningful supporting evidence. The claim may be true or false, but the post asserts rather than argues. The framing is often provocative. A statistic may appear, but it is decorative rather than genuinely reasoning.
+Example: "LeBron is not a top 5 player of all time and his fans need to accept it. Jordan, Kareem, Magic, Bird, and Wilt were all better than him. No debate."
+
+reaction: An immediate emotional response to a specific game event, trade, play, or news item. Little to no argument — the post expresses a feeling in the moment. The content is event-anchored and loses most meaning without knowing what just happened.
+Example: "CURRY JUST HIT THAT FROM HALF COURT WITH 0.4 SECONDS ON THE CLOCK ARE YOU KIDDING ME. I HAVE NEVER SEEN ANYTHING LIKE THIS IN MY ENTIRE LIFE."
+
+Respond with ONLY the label name — nothing else.
+Do not explain your reasoning.
+Do not add punctuation or extra words.
+
+Valid labels:
+analysis
+hot_take
+reaction
+"""
