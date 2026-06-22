@@ -216,8 +216,8 @@ python app.py --model_path /path/to/model/folder
 
 ## AI tools I used
 
-**Testing my label definitions:** Before annotating anything, I gave Claude my definitions and asked it to generate posts that sit on the analysis/hot_take boundary. A few of them I couldn't cleanly classify, which told me my definitions needed tightening. That's how I landed on the "2+ specific verifiable data points = analysis" rule.
+Before I labeled a single post, I wanted to stress-test my definitions. I gave Claude my three labels and asked it to generate posts that fall right on the analysis/hot_take line — the kind I'd be most likely to disagree with myself on. A few of those generated posts I genuinely couldn't classify cleanly, which told me my definitions weren't tight enough yet. That's what pushed me to make the "2+ specific verifiable data points = analysis" rule explicit, instead of leaving it as a vibe.
 
-**Speeding up annotation:** I used an LLM to pre-label batches of 30-40 posts, then went through every one myself and corrected mistakes. Agreement was around 80%. The disagreements were almost all on analytical-framing hot takes — the same ones the fine-tuned model later got wrong.
+During annotation I used an LLM to give me a first-pass label on batches of 30-40 posts at a time, then read every single one myself and corrected what was wrong. It got about 80% right. The disagreements were almost always the same type — a hot take dressed up in analytical language — which, in hindsight, foreshadowed exactly what the fine-tuned model later failed on too.
 
-**Finding patterns in the errors:** After getting my wrong predictions I pasted all 10 into Claude and asked what patterns it saw. It spotted the "sounds analytical but isn't" pattern right away. I went back through all 10 manually to check — it held for every single one.
+After I got my evaluation results and saw 10 wrong predictions, I pasted them all into Claude and asked what it noticed. It picked out the "sounds analytical but isn't" pattern immediately. I didn't just take that at face value — I went back through all 10 myself to check. It held for every single one, which is when I felt confident enough to call it a real pattern rather than a coincidence.
