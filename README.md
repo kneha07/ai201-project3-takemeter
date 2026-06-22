@@ -78,7 +78,7 @@ Sounds historical. But "15 years" isn't backed up anywhere, and the counterfactu
 
 ## Training
 
-Base model: `distilbert-base-uncased`
+Base model: `distilbert-base-uncased` | Training platform: Google Colab
 
 I kept the defaults mostly — 3 epochs, learning rate 2e-5, batch size 16. The main decision I made was to not increase epochs past 3. Validation accuracy hit 70% at epoch 2 and didn't move in epoch 3, which told me the model had learned what it could from 140 training examples. More epochs would have just overfit.
 
@@ -185,6 +185,32 @@ The Groq baseline didn't have this problem because llama-3.3-70b has seen millio
 The requirement to write success criteria before seeing the results was genuinely useful. I wrote "no single class with F1 below 0.55" as a hard requirement. When I saw hot_take F1 = 0.00 it was immediately clear the model failed in a specific way, rather than looking at 66.7% accuracy and wondering if that's okay.
 
 The part that diverged from the spec: the spec frames Section 6 as showing improvement over the baseline. My model regressed by 30 points. That's not a mistake — it's actually the most interesting finding. Small fine-tuning datasets help when the signal is lexical. When the task requires semantic judgment, a large pretrained model beats a small fine-tuned one.
+
+---
+
+## Confidence calibration
+
+The fine-tuned model's confidence scores cluster tightly in the 0.34–0.38 range across all 30 test predictions — both correct and incorrect. This is a calibration failure: a well-calibrated model should assign higher confidence to predictions it gets right.
+
+| Confidence range | Examples | Accuracy |
+|-----------------|----------|----------|
+| 0.0–0.4 | 28 | 67% |
+| 0.4–0.6 | 2 | 50% |
+| 0.6–1.0 | 0 | N/A |
+
+The model never assigns more than ~0.45 confidence to any prediction. DistilBERT fine-tuned on 140 examples doesn't learn to be confidently right — it learns to hedge. The narrow confidence band means confidence is not a useful signal for this model: you can't trust a 0.38 prediction more than a 0.35 one.
+
+---
+
+## Deployed interface
+
+A Gradio app (`app.py`) accepts any post as input and returns the predicted label with per-class confidence scores.
+
+To run it, download the model folder from Google Drive and:
+
+```bash
+python app.py --model_path /path/to/model/folder
+```
 
 ---
 
