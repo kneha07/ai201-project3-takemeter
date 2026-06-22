@@ -124,8 +124,26 @@ After getting wrong predictions from the notebook, paste all misclassified examp
 
 ## Hard Annotation Decisions (updated during Milestone 3)
 
-*(To be filled in as I annotate — document at least 3 genuinely difficult cases below.)*
+1. **Stat-decorated assertion about Jokic's playmaking**
 
-1. **TBD** — example, which labels it could belong to, and what I decided
-2. **TBD**
-3. **TBD**
+   Post: *"Unpopular opinion: Nikola Jokic gets too much credit for his 'playmaking.' He has the ball a lot and makes easy passes — the reading he does is impressive but it's not that different from what other skilled bigs have done. The MVP hype around his passing is way overblown."*
+
+   Could belong to: `hot_take` or `analysis` — the post acknowledges something verifiable ("he has the ball a lot") and makes a comparative claim about "other skilled bigs," which sounds like it's reasoning.
+
+   Decision: → `hot_take`. The comparative claim ("not that different from other skilled bigs") is asserted without any actual evidence — no players are named, no numbers are cited. The structure is "I acknowledge the thing exists, but it's overhyped" which is the archetypal decorative-qualification hot take. Applying the decision rule from the Edge Cases section: remove the opinion framing and there's no argument left standing on its own.
+
+2. **Bold claim + real statistic about roster construction**
+
+   Post: *"The Lakers' roster construction is fundamentally flawed. Their starting five has a combined defensive rating of 114.2 when LeBron and AD share the court but AD is at PF — the worst configuration. When AD plays center with a stretch-4 beside him, that number drops to 107.8. The coaching staff inexplicably refuses to use this."*
+
+   Could belong to: `hot_take` or `analysis` — the framing is accusatory ("inexplicably refuses," "fundamentally flawed") which reads like a hot take, but the post contains two specific, verifiable defensive ratings and a testable positional claim.
+
+   Decision: → `analysis`. Applying the ≥2 specific verifiable data points rule: the post cites two distinct lineup defensive ratings (114.2 vs. 107.8) that directly support the claim. The emotional framing ("inexplicably refuses") is commentary on top of an actual argument, not a substitute for one. This was the clearest application of the "strong confidence + actual evidence = analysis" rule in the dataset.
+
+3. **Era comparison with implicit but unverified claim**
+
+   Post: *"The Eastern Conference has been bad for 15 years and all the impressive LeBron Finals runs came at the expense of easy paths through the East. If he played in the West his whole career the way MJ did, he has maybe two titles. The conference disparity is real and it matters."*
+
+   Could belong to: `hot_take` or `analysis` — the claim about conference disparity is empirically checkable (win differential between conferences is a real statistic), and "15 years" sounds like a historical claim. But no actual data is cited.
+
+   Decision: → `hot_take`. The "15 years" is rhetorical, not a verified figure. The counterfactual ("he has maybe two titles") is pure speculation. The conference disparity claim, while plausible, is stated as self-evident rather than supported. The post gestures at evidence without producing any. This is the pattern where a post sounds analytical because it references history and makes a comparative claim, but on inspection every statement is asserted rather than argued.
