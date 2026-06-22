@@ -1,5 +1,7 @@
 # TakeMeter — r/nba Discourse Classifier
 
+**Demo video:** https://youtu.be/Z407Vo6f2Sc
+
 I built a classifier that reads r/nba posts and labels them as analysis, hot takes, or reactions. The idea came from noticing how different the posts in the same thread can be — someone writes a whole breakdown with stats, the next person just yells in all caps, and someone else posts a confident opinion with zero evidence. I wanted to see if a model could learn to tell those apart.
 
 ---
